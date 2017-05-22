@@ -101,7 +101,7 @@ io.sockets.on('connection', function (socket) {
 	        }
 
                var username = payload.username;
-		if(('undefined' === typeof username) || !room){
+		if(('undefined' === typeof username) || !username){
 		     var error_message = 'join_room did not specify a username, command aborted';
 		     log(error_message);
 		     socket.emit('join_room_response',   {
