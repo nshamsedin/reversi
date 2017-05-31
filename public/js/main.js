@@ -115,13 +115,15 @@ socket.on('player_disconnected',function(payload) {
 		dom_elements.slideUp(1000);
 	}
 
-/*manage the message that  player has left*/
+/* Manage the message that  player has left*/
 	var newHTML = '<p>'+payload.username+' has left the lobby</p>';
 	var newNode = $(newHTML);
 	newNode.hide();
 	$('#messages').append(newNode);
 	newNode.slideDown(1000);
 });
+
+/* Send an invite message to the server */
 
 function invite(who){
 	var payload = {};
@@ -131,7 +133,7 @@ function invite(who){
 	socket.emit('invite',payload);
 }
 
-socket.on('invited_response',function(payload) {
+socket.on('invite_response',function(payload) {
 	if(payload.result == 'fail') {
 		alert(payload.message);
 		return;
