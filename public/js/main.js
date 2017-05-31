@@ -123,12 +123,37 @@ socket.on('player_disconnected',function(payload) {
 	newNode.slideDown(1000);
 });
 
+function invite(who){
+	var payload = {};
+	payload.requested_user = who;
+	
+	console.log('*** Client Log Message: \'invite\' payload: '+JSON.stringify(payload));
+	socket.emit('invite',payload);
+}
+
+socket.on('invited_response',function(payload) {
+	if(payload.result == 'fail') {
+		alert(payload.message);
+		return;
+	}
+	var newNode = makeInvitedButton();
+	$('.socket_+payload.socket_id+' button').replaceWith(newNode);
+});
+
+socket.on('invited',function(payload) {
+	if(payload.result == 'fail') {
+		alert(payload.message);
+		return;
+	}
+	var newNode = makePlayButton();
+	$('.socket_+payload.socket_id+' button').replaceWith(newNode);
+});
+
 socket.on('send_message_response',function(payload) {
 	if(payload.result == 'fail') {
 		alert(payload.message);
 		return;
 	}
-
 	$('#messages').append('<p><b>'+payload.username+' says:</b> '+payload.message+'</p>');
 });
 
