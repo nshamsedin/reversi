@@ -110,7 +110,7 @@ socket.on('player_disconnected',function(payload) {
 /*if someone left then animate out their content*/
 	var dom_elements = $('.socket_'+payload.socket_id);
 
-/*if wsomething exists*/
+/*if something exists*/
 	if(dom_elements.length != 0) {
 		dom_elements.slideUp(1000);
 	}
