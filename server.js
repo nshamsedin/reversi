@@ -211,7 +211,7 @@ socket.on('send_message',function(payload) {
 			return;
 		}
 
-		var username = payload.username;
+		var username = players[socket.id].username;
 		if(('undefined' === typeof username) || !username) {
 			var error_message = 'send_message didn\'t specify a username, command aborted';
 			log(error_message);
@@ -295,7 +295,7 @@ socket.on('invite',function(payload) {
 
 		var requested_user = payload.requested_user;
 		if(('undefined' === typeof requested_user) || !requested_user) {
-			var error_message = 'invite didn\'t specify a requested user, command aborted';
+			var error_message = 'invite didn\'t specify a requested_user, command aborted';
 			log(error_message);
 			socket.emit('invite_response', {
 				result: 'fail',
@@ -306,6 +306,7 @@ socket.on('invite',function(payload) {
 		
 		var room = players[socket.id].room;
 		var roomObject = io.sockets.adapter.rooms[room];
+	
 		/* Make sure that the user being invited is in the room */
 		if(!roomObject.sockets.hasOwnProperty(requested_user)){
 			var error_message = 'invite requested a user that wasn\'t in the room, command aborted';
@@ -330,8 +331,7 @@ socket.on('invite',function(payload) {
 			result: 'success',
 			socket_id: socket.id
 		};
-		socket.to(requested_user).emit('invited', success_data);
-	
+		socket.to(requested_user).emit('invited',success_data);
 		log('invite successful');
 	});
 
