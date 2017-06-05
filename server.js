@@ -538,7 +538,7 @@ io.sockets.on('connection', function(socket){
 	{
 		'row': 0-7 the row to play the token on
 		'column': 0-7 the column to play the token on
-		'color': 'purple or blue'
+		'color': 'white or 'black'
 	}
 	if successful a success message will be followed by a game_update message
 	play_token_response:
