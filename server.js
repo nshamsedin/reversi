@@ -526,7 +526,7 @@ socket.on('game_start',function(payload) {
 /* play token command */
 	/*payload:
 	{
-		'row': 0-7 the rolw to plpay the token on
+		'row': 0-7 the row to play the token on
 		'column': 0-7 the column to play the token on
 		'color': 'white or black'
 	}
