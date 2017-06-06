@@ -1,5 +1,5 @@
 body {
-    background-image: url('../images/green.png');
+    background-image: url('assets/images/green.png');
 }
 
 table#game_board {
