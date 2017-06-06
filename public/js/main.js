@@ -343,7 +343,7 @@ socket.on('game_update',function(payload){
 			if(board[row][column] == 'b'){
 				blacksum++;
 			}
-			if(board[row][column] == 'p'){
+			if(board[row][column] == 'w'){
 				whitesum++;
 			}
 
@@ -352,28 +352,28 @@ socket.on('game_update',function(payload){
 				if(old_board[row][column] == '?' && board[row][column] == ' '){
 					$('#'+row+'_'+column).html('<img src="assets/images/empty.gif" alt="empty square"/>');
 				}
-				else if(old_board[row][column] == '?' && board[row][column] == 'p'){
+				else if(old_board[row][column] == '?' && board[row][column] == 'w'){
 					$('#'+row+'_'+column).html('<img src="assets/images/empty_to_white.gif" alt="white square"/>');
 				}
 				else if(old_board[row][column] == '?' && board[row][column] == 'b'){
 					$('#'+row+'_'+column).html('<img src="assets/images/empty_to_black.gif" alt="black square"/>');
 				}
-				else if(old_board[row][column] == ' ' && board[row][column] == 'p'){
+				else if(old_board[row][column] == ' ' && board[row][column] == 'w'){
 					$('#'+row+'_'+column).html('<img src="assets/images/empty_to_white.gif" alt="white square"/>');
 				}
 				else if(old_board[row][column] == ' ' && board[row][column] == 'b'){
 					$('#'+row+'_'+column).html('<img src="assets/images/empty_to_black.gif" alt="black square"/>');
 				}
-				else if(old_board[row][column] == 'p' && board[row][column] == ' '){
+				else if(old_board[row][column] == 'w' && board[row][column] == ' '){
 					$('#'+row+'_'+column).html('<img src="assets/images/white_to_empty.gif" alt="empty square"/>');
 				}
 				else if(old_board[row][column] == 'b' && board[row][column] == ' '){
 					$('#'+row+'_'+column).html('<img src="assets/images/black_to_empty.gif" alt="empty square"/>');
 				}
-				else if(old_board[row][column] == 'p' && board[row][column] == 'b'){
+				else if(old_board[row][column] == 'w' && board[row][column] == 'b'){
 					$('#'+row+'_'+column).html('<img src="assets/images/white_to_black.gif" alt="black square"/>');
 				}
-				else if(old_board[row][column] == 'b' && board[row][column] == 'p'){
+				else if(old_board[row][column] == 'b' && board[row][column] == 'w'){
 					$('#'+row+'_'+column).html('<img src="assets/images/black_to_white.gif" alt="white square"/>');
 				}
 				else {
