@@ -747,6 +747,9 @@ function check_line_match(who,dr,dc,r,c,board){
 	if(board[r][c] === who){
 	   return true;
 	}
+	if(board[r][c] === ' '){
+	   return false;
+	}
 	if( (r+dr < 0) || (r+dr > 7 ) ){
 	    return false;
 	}
